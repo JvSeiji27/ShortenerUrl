@@ -1,0 +1,17 @@
+version: '3.8'
+services:
+  mongodb:
+    image: mongo:latest  # Usando a imagem mais recente do MongoDB
+    container_name: mongo-container
+    restart: always  # Reinicia o contêiner em caso de falhas
+    ports:
+      - "28017:27017"  # Mapeia a porta 27017 do contêiner para 28017 no host
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: joaovssc  # Usuário admin inicial
+      MONGO_INITDB_ROOT_PASSWORD: password  # Senha inicial
+    volumes:
+      - mongo-data:/data/db  # Persistência dos dados
+
+volumes:
+  mongo-data:
+    driver: local
